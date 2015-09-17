@@ -85,8 +85,8 @@ be referred to as the *signature*.
 The message is the data that is to be authenticated by the HMAC. The following
 three fields are required: *timestamp*, *nonce*, *request body* in that order.
 
-The length of the field followed by the ASCII pipe symbol `|` (0x7C) will be
-used as a delimiter to separate fields.
+The length of the field (ASCII decimal string) followed by the ASCII pipe
+symbol `|` (0x7C) will be used as a delimiter to separate fields.
 
 In pseudo-code this would look like:
 
