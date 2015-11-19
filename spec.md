@@ -294,3 +294,18 @@ X-Sample-Header: foobarbaz
 
 The value for the signature is:
 `2da135db5b8e8c843587fab1a4ddf20f0bc18bb9b379add64cb117a3eba516a1296be09683a0d69d9ec42b1be74f0dc9166550e082e875192b75faff78b2d16a`
+
+### Security Considerations
+
+1. Transport Layer Security (TLS) should be used whenever possible with
+this request signing specification. TLS provides confidentiality guarantees
+that are otherwise out of scope for this specification, but are necessary to
+to prevent an eavesdropper from viewing traffic.
+
+1. A known weakness of this specification occurs when you do not use TLS and
+you have multiple hosts validating signed requests. For example, if you have
+multiple servers that process HTTP webhooks behind a load balancer. Because
+the nonce cache is local to a server, an attacker can potentially capture a
+signed request and replay it to the other servers that are yet to see it. To
+mitigate this weakness, either TLS should be used or the nonce should be
+stored in a shared cache.
